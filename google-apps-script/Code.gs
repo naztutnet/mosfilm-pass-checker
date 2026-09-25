@@ -20,7 +20,7 @@ function setup() {
 function doPost(event) {
   const params = event && event.parameter ? event.parameter : {};
   const surname = normalizeSurname_(params.surname || "");
-  const status = params.status === "found" ? "Пропуск заказан" : "Фамилии нет в списке";
+  const status = params.status === "found" ? "Пропуск заказан" : "Фамилия не подтверждена";
   const sessionId = String(params.sessionId || "").replace(/[^a-zA-Z0-9-]/g, "").slice(0, 80);
   const source = String(params.source || "");
 
@@ -82,10 +82,16 @@ function ensureSheet_(spreadsheet) {
 
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold");
+    sheet
+      .getRange(1, 1, 1, HEADERS.length)
+      .setFontWeight("bold")
+      .setBackground("#f1f3f4");
     sheet.setFrozenRows(1);
     sheet.getRange("A:A").setNumberFormat("dd.MM.yyyy HH:mm:ss");
-    sheet.autoResizeColumns(1, HEADERS.length);
+    sheet.setColumnWidth(1, 155);
+    sheet.setColumnWidth(2, 180);
+    sheet.setColumnWidth(3, 210);
+    sheet.setColumnWidth(4, 280);
   }
 
   return sheet;
