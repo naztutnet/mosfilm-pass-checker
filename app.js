@@ -97,7 +97,7 @@ async function checkSurname() {
       showResult(
         "success",
         "Пропуск заказан",
-        "Фамилия есть в списке."
+        "Пропуск можно получить в бюро пропусков."
       );
       return;
     }
@@ -105,7 +105,7 @@ async function checkSurname() {
     showResult(
       "missing",
       "Фамилии нет в списке",
-      "Напишите, чтобы оформить заявку.",
+      "Напишите мне в Telegram @naz_tut_net или позвоните по телефону 8 926 587 79 72.",
       true
     );
   } catch {

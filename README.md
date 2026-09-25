@@ -27,7 +27,7 @@ python scripts/build_pass_hashes.py /path/to/list.docx --out assets/pass-hashes.
 
 ## Контакты
 
-Telegram указан непосредственно в `index.html`. Телефон настраивается полями `phoneDisplay` и `phoneHref` в `assets/pass-hashes.js`.
+Telegram указан непосредственно в `index.html`. Телефон хранится в полях `phoneDisplay` и `phoneHref` в `assets/pass-hashes.js` и в генераторе `scripts/build_pass_hashes.py`.
 
 ## Журнал проверок
 

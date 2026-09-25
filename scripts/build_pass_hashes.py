@@ -60,7 +60,7 @@ def write_javascript(output_path: Path, surnames: list[str]) -> None:
     hashes = sorted(hash_surname(surname) for surname in surnames)
     content = (
         "// Generated from the approved DOCX. Contains hashes only, never names.\n"
-        f"window.PASS_CHECK_CONFIG = {json.dumps({'namespace': NAMESPACE, 'phoneDisplay': '', 'phoneHref': ''}, ensure_ascii=False, indent=2)};\n"
+        f"window.PASS_CHECK_CONFIG = {json.dumps({'namespace': NAMESPACE, 'phoneDisplay': '8 926 587 79 72', 'phoneHref': 'tel:+79265877972'}, ensure_ascii=False, indent=2)};\n"
         f"window.PASS_SURNAME_HASHES = {json.dumps(hashes, ensure_ascii=False, indent=2)};\n"
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)

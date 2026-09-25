@@ -1,8 +1,8 @@
 // Generated from the approved DOCX. Contains hashes only, never names.
 window.PASS_CHECK_CONFIG = {
   "namespace": "mf-q4-2026",
-  "phoneDisplay": "",
-  "phoneHref": ""
+  "phoneDisplay": "8 926 587 79 72",
+  "phoneHref": "tel:+79265877972"
 };
 window.PASS_SURNAME_HASHES = [
   "0412282c3be0e63541d2537616a398d9c354b13e1734c8f27f1e9c70e10c64d5",
