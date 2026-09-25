@@ -6,8 +6,10 @@ const resultText = document.querySelector("#result-text");
 const contactActions = document.querySelector("#contact-actions");
 const phoneLink = document.querySelector("#phone-link");
 const checkButton = document.querySelector("#check-button");
+const loggingNote = document.querySelector("#logging-note");
 
 const config = window.PASS_CHECK_CONFIG;
+const logConfig = window.PASS_LOG_CONFIG || {};
 const knownHashes = new Set(window.PASS_SURNAME_HASHES || []);
 
 function normalizeSurname(value) {
@@ -26,6 +28,39 @@ async function sha256(value) {
     .join("");
 }
 
+function getSessionId() {
+  const storageKey = "mosfilm-pass-session";
+  let sessionId = sessionStorage.getItem(storageKey);
+  if (!sessionId) {
+    sessionId = crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    sessionStorage.setItem(storageKey, sessionId);
+  }
+  return sessionId;
+}
+
+function logCheck(surname, status) {
+  if (!logConfig.endpoint) {
+    return;
+  }
+
+  const body = new URLSearchParams({
+    surname,
+    status,
+    sessionId: getSessionId(),
+    source: config.namespace,
+  });
+
+  fetch(logConfig.endpoint, {
+    method: "POST",
+    mode: "no-cors",
+    body,
+    keepalive: true,
+    referrerPolicy: "no-referrer",
+  }).catch(() => {
+    // Logging must never block the pass check.
+  });
+}
+
 function showResult(state, title, text, showContacts = false) {
   result.hidden = false;
   result.className = `result result--${state}`;
@@ -41,6 +76,10 @@ if (config?.phoneDisplay && config?.phoneHref) {
   phoneLink.href = config.phoneHref;
 }
 
+if (logConfig.endpoint) {
+  loggingNote.hidden = false;
+}
+
 async function checkSurname() {
   const surname = normalizeSurname(input.value);
   if (surname.length < 2) {
@@ -52,6 +91,7 @@ async function checkSurname() {
   try {
     const hash = await sha256(`${config.namespace}:${surname}`);
     const isListed = knownHashes.has(hash);
+    logCheck(surname, isListed ? "found" : "missing");
 
     if (isListed) {
       showResult(

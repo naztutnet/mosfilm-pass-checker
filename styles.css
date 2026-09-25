@@ -120,6 +120,18 @@ h1 {
   background: #a91e23;
 }
 
+.logging-note {
+  margin: 12px 0 0;
+  color: #5d5b55;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.logging-note[hidden] {
+  display: none;
+}
+
 .search button:focus-visible,
 .contact-actions a:focus-visible {
   outline: 4px solid var(--yellow);
@@ -194,6 +206,10 @@ h1 {
 }
 
 .contact-actions[hidden] {
+  display: none;
+}
+
+.contact-actions a[hidden] {
   display: none;
 }
 
