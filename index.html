@@ -7,24 +7,21 @@
       name="description"
       content="Проверка наличия фамилии в заявке на квартальный пропуск на Мосфильм"
     />
-    <title>Проверка пропуска на Мосфильм</title>
+    <title>Квартальный пропуск на Мосфильм</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="page-shell">
       <section class="checker" aria-labelledby="page-title">
-        <div class="checker__topline" aria-hidden="true">
-          <span>КПП</span>
-          <span class="checker__quarter">IV / 2026</span>
-        </div>
-
         <header class="checker__header">
-          <p class="eyebrow">Квартальный пропуск</p>
-          <h1 id="page-title">Проверьте свою фамилию</h1>
-          <p class="lead">
-            Узнайте, включены ли вы в заявку на проход на территорию
-            «Мосфильма» в 4 квартале 2026 года.
-          </p>
+          <img
+            class="mosfilm-logo"
+            src="assets/mosfilm-logo.svg"
+            alt="Мосфильм"
+            width="166"
+            height="133"
+          />
+          <h1 id="page-title">Квартальный пропуск на Мосфильм</h1>
         </header>
 
         <form id="pass-form" class="search" novalidate>
@@ -36,13 +33,11 @@
               type="text"
               inputmode="text"
               autocomplete="family-name"
-              placeholder="Например, Иванов"
               maxlength="80"
               required
             />
             <button id="check-button" type="button">Проверить</button>
           </div>
-          <p class="search__hint">Можно вводить в любом регистре. Буквы «е» и «ё» считаются одинаковыми.</p>
         </form>
 
         <section id="result" class="result" aria-live="polite" hidden>
@@ -62,13 +57,6 @@
           </div>
         </section>
 
-        <footer class="checker__footer">
-          <p>
-            Проверка проходит только по текущей заявке. Наличие фамилии означает,
-            что заявка подана, но не подтверждает фактическую выдачу пропуска.
-          </p>
-          <p class="privacy-note">Введённая фамилия никуда не отправляется и не сохраняется.</p>
-        </footer>
       </section>
     </main>
 

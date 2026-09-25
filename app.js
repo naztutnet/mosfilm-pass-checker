@@ -44,7 +44,7 @@ if (config?.phoneDisplay && config?.phoneHref) {
 async function checkSurname() {
   const surname = normalizeSurname(input.value);
   if (surname.length < 2) {
-    showResult("error", "Введите фамилию", "Используйте русские буквы и проверьте написание.");
+    showResult("error", "Введите фамилию", "Проверьте написание.");
     input.focus();
     return;
   }
@@ -57,15 +57,15 @@ async function checkSurname() {
       showResult(
         "success",
         "Пропуск заказан",
-        "Фамилия есть в заявке на 4 квартал 2026 года."
+        "Фамилия есть в списке."
       );
       return;
     }
 
     showResult(
       "missing",
-      "Заявка не найдена",
-      "Фамилии нет в текущем списке. Напишите организатору, чтобы оформить заявку на пропуск.",
+      "Фамилии нет в списке",
+      "Напишите, чтобы оформить заявку.",
       true
     );
   } catch {
