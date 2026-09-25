@@ -14,19 +14,25 @@
     <main class="page-shell">
       <section class="checker" aria-labelledby="page-title">
         <header class="checker__header">
-          <img
-            class="mosfilm-logo"
-            src="assets/mosfilm-logo.svg"
-            alt="Мосфильм"
-            width="166"
-            height="133"
-          />
+          <div class="brandline">
+            <div class="brandline__identity">
+              <img
+                class="mosfilm-logo"
+                src="assets/mosfilm-logo.svg"
+                alt="Мосфильм"
+                width="166"
+                height="133"
+              />
+              <span class="brandline__section">Пропуск</span>
+            </div>
+            <span class="brandline__quarter">IV квартал</span>
+          </div>
           <h1 id="page-title">Квартальный пропуск на Мосфильм</h1>
         </header>
 
         <form id="pass-form" class="search" novalidate>
-          <label for="surname">Фамилия</label>
-          <div class="search__row">
+          <label class="field" for="surname">
+            <span class="field__label">Фамилия</span>
             <input
               id="surname"
               name="surname"
@@ -36,8 +42,8 @@
               maxlength="80"
               required
             />
-            <button id="check-button" type="button">Проверить</button>
-          </div>
+          </label>
+          <button id="check-button" type="button">Проверить</button>
           <p id="logging-note" class="logging-note" hidden>
             Фамилия и результат проверки записываются в журнал.
           </p>
