@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Проверка наличия фамилии в заявке на квартальный пропуск на Мосфильм"
+    />
+    <title>Проверка пропуска на Мосфильм</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="checker" aria-labelledby="page-title">
+        <div class="checker__topline" aria-hidden="true">
+          <span>КПП</span>
+          <span class="checker__quarter">IV / 2026</span>
+        </div>
+
+        <header class="checker__header">
+          <p class="eyebrow">Квартальный пропуск</p>
+          <h1 id="page-title">Проверьте свою фамилию</h1>
+          <p class="lead">
+            Узнайте, включены ли вы в заявку на проход на территорию
+            «Мосфильма» в 4 квартале 2026 года.
+          </p>
+        </header>
+
+        <form id="pass-form" class="search" novalidate>
+          <label for="surname">Фамилия</label>
+          <div class="search__row">
+            <input
+              id="surname"
+              name="surname"
+              type="text"
+              inputmode="text"
+              autocomplete="family-name"
+              placeholder="Например, Иванов"
+              maxlength="80"
+              required
+            />
+            <button id="check-button" type="button">Проверить</button>
+          </div>
+          <p class="search__hint">Можно вводить в любом регистре. Буквы «е» и «ё» считаются одинаковыми.</p>
+        </form>
+
+        <section id="result" class="result" aria-live="polite" hidden>
+          <div class="result__mark" aria-hidden="true"></div>
+          <div>
+            <p id="result-title" class="result__title"></p>
+            <p id="result-text" class="result__text"></p>
+            <div id="contact-actions" class="contact-actions" hidden>
+              <a
+                class="contact-actions__telegram"
+                href="https://t.me/naz_tut_net"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Написать в Telegram</a>
+              <a id="phone-link" class="contact-actions__phone" href="#" hidden></a>
+            </div>
+          </div>
+        </section>
+
+        <footer class="checker__footer">
+          <p>
+            Проверка проходит только по текущей заявке. Наличие фамилии означает,
+            что заявка подана, но не подтверждает фактическую выдачу пропуска.
+          </p>
+          <p class="privacy-note">Введённая фамилия никуда не отправляется и не сохраняется.</p>
+        </footer>
+      </section>
+    </main>
+
+    <script src="assets/pass-hashes.js?v=1"></script>
+    <script src="app.js?v=1"></script>
+  </body>
+</html>
